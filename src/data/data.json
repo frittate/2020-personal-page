@@ -1,0 +1,84 @@
+{
+  "projects": [
+    {
+      "id": "firmenname1",
+      "client": "Testfirma 1",
+      "preview_image": {
+        "src": "https://placeimg.com/640/480/arch",
+        "alt": "Alttext"
+      },
+      "category": "full",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas eleifend ultrices eget egestas volutpat.",
+      "images": [
+        {
+          "src": "https://placeimg.com/640/480/arch",
+          "alt": "Alttext"
+        },
+        {
+          "src": "https://placeimg.com/640/480/arch",
+          "alt": "Alttext"
+        }
+      ]
+    },
+    {
+      "id": "firmenname2",
+      "client": "Testfirma 2",
+      "preview_image": {
+        "src": "https://placeimg.com/640/480/arch",
+        "alt": "Alttext"
+      },
+      "category": "code",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas eleifend ultrices eget egestas volutpat.",
+      "images": [
+        {
+          "src": "https://placeimg.com/640/480/arch",
+          "alt": "Alttext"
+        },
+        {
+          "src": "https://placeimg.com/640/480/arch",
+          "alt": "Alttext"
+        }
+      ]
+    },
+    {
+      "id": "firmenname3",
+      "client": "Testfirma 3",
+      "preview_image": {
+        "src": "https://placeimg.com/640/480/arch",
+        "alt": "Alttext"
+      },
+      "category": "design",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas eleifend ultrices eget egestas volutpat.",
+      "images": [
+        {
+          "src": "https://placeimg.com/640/480/arch",
+          "alt": "Alttext"
+        },
+        {
+          "src": "https://placeimg.com/640/480/arch",
+          "alt": "Alttext"
+        }
+      ]
+    },
+    {
+      "id": "firmenname4",
+      "client": "Testfirma 4",
+      "preview_image": {
+        "src": "https://placeimg.com/640/480/arch",
+        "alt": "Alttext"
+      },
+      "tags": ["design"],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas eleifend ultrices eget egestas volutpat.",
+      "images": [
+        {
+          "src": "https://placeimg.com/640/480/arch",
+          "alt": "Alttext"
+        },
+        {
+          "src": "https://placeimg.com/640/480/arch",
+          "alt": "Alttext"
+        }
+      ]
+    }
+  ]
+}

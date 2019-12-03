@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <mq-layout mq="small" class="sm-home" :class="$mq">
+   <div>
+    <mq-layout mq="small" class="sm-projects" :class="$mq">
       <SimpleLogo />
-      <LandingPagePortrait />
-      <LandingPageSidebar />
       <SimpleNav />
+      <ProjectsContent />
     </mq-layout>
-    <mq-layout mq="screen" class="sm-home" :class="$mq">
-      <LandingPagePortrait />
-      <LandingPageSidebar />
+
+    <mq-layout mq="screen" class="sm-projects" :class="$mq">
+      <ProjectsContent />
+      <Sidebar />
       <div class="sm-topbar">
         <SimpleLogo />
         <SimpleNav />
@@ -18,37 +18,35 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import SimpleLogo from '../components/SimpleLogo';
 import SimpleNav from '../components/SimpleNav';
-import LandingPagePortrait from '../components/LandingPagePortrait';
-import LandingPageSidebar from '../components/LandingPageSidebar';
+import ProjectsContent from '../components/ProjectsContent';
+import Sidebar from '../components/Sidebar';
 
 export default {
-  name: 'home',
+  name: 'Projects',
   components: {
     SimpleLogo,
     SimpleNav,
-    LandingPagePortrait,
-    LandingPageSidebar
+    Sidebar,
+    ProjectsContent
   }
 }
 </script>
 
 <style>
-  .sm-home.small {
+ .sm-projects.small {
     display: flex;
     flex-flow: column;
+    height: 100vh;
   }
 
-  .sm-home.screen {
+  .sm-projects.screen {
     overflow: hidden;
     display: flex;
     min-height: 1000px;
     position: relative;
-    align-items: stretch;
     height: 95vh;
-    justify-content: flex-end;
   }
 
   .sm-topbar {
@@ -59,5 +57,4 @@ export default {
     width: 100%;
     z-index: 6;
   }
-
 </style>
