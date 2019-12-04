@@ -8,7 +8,7 @@
     </div>
     <div class="sm-projects__grid">
       <div v-for="item in filteredProjects" :key="item.id" class="sm-projects__card">
-        <router-link :to="item.id">
+        <router-link :to="itemLink(item)">
           <div class="sm-projects__imgwrapper">
             <img :src="item.preview_image.src" alt="" class="sm-projects__img">
           </div>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import {loadData as loadExternalData }  from '@/data/loadDataFromPrismic.js';
+import {loadAllData as loadExternalData }  from '@/data/loadDataFromPrismic.js';
 
 export default {
   name: 'ProjectsContent',
@@ -44,9 +44,9 @@ export default {
   },
   methods: {
     loadData(){
-      loadExternalData().then(res => {
+      loadExternalData(this.$prismic).then(res => {
         console.log(res);
-        this.projects = res.projects;
+        this.projects = res;
       })
     },
     setFilter(target){
@@ -55,6 +55,9 @@ export default {
       } else {
         this.filter = target;
       }
+    },
+    itemLink(item){
+      return `/projects/${item.id}`
     }
   }
 }
