@@ -69,10 +69,19 @@ export function loadSingleData(prismic, uid){
       prismic.client
         .getByUID('portfolio-project', uid)
         .then(document => {
-          console.log(document)
+          const d = document;
+          item.id = d.uid;
+          item.client = d.data.project_name[0].text;
+          item.categories = d.tags;
+          item.description = d.data.project_description[0].text;
+          item.preview_image.src = '',
+          item.images = d.data.project_images
+          d.data.project_category.forEach(el => {
+            item.technologies.push(el.technologies)
+          })
+        resolve(item);
         })
 
-      resolve(item)
     } catch (error) {
       reject()
     }
