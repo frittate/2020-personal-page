@@ -19,7 +19,8 @@ export default {
     font-size: 1.8rem;
   }
 
-  .sm-nav__wrapper a.router-link-exact-active {
+  .sm-nav__wrapper a.router-link-exact-active,
+  .sm-nav__wrapper a.router-link-active {
     color: var(--main-color);
   }
 
@@ -47,6 +48,4 @@ export default {
     margin-bottom: 48px;
     line-height: 110%;
   }
-
-  
 </style>

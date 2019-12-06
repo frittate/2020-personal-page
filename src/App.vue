@@ -1,8 +1,40 @@
 <template>
   <div id="app" :class="$mq">
-    <router-view />
+   <page-transition />
+    <transition 
+    v-on:before-enter="rightToLeft" 
+    v-on:appear="setup" 
+    v-bind:css="false">
+      <router-view />
+    </transition>
   </div>
 </template>
+
+<script>
+import { gsap } from "gsap";
+import PageTransition from './components/PageTransition';
+
+export default {
+  components: {
+    PageTransition
+  },
+  methods: {
+     rightToLeft: function(done){
+       let tl = gsap.timeline();
+        tl.fromTo('.sm-transition--black', {scaleX: 0}, {scaleX: 1, duration: 0.6, transformOrigin: 'right', ease: 'Power4.easeInOut'},)
+        .to('.sm-transition--black', {scaleX: 0, duration: 0.6, transformOrigin: 'left', ease: 'Power4.easeInOut'},)
+        .fromTo('.sm-transition--main', {scaleX: 0}, {scaleX: 1, duration: 0.8, transformOrigin: 'right', ease: 'Power4.easeInOut'})
+        .to('.sm-transition--main', {scaleX: 0, duration: 0.8, transformOrigin: 'left', ease: 'Power4.easeInOut'},)
+
+        done()
+     },
+     setup: function(done){
+       gsap.set('.sm-transition', {scale: 0});
+       done()
+     }
+  },
+}
+</script>
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Teko:700&display=swap");
@@ -20,7 +52,7 @@ html {
 }
 
 #app {
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 20px;
@@ -40,4 +72,5 @@ html {
 .red {
   color: var(--main-color);
 }
+
 </style>

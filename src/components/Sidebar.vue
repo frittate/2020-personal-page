@@ -19,6 +19,7 @@ export default {
     flex-flow: column;
     background: var(--main-black);
     background-image: url('../assets/background_test.png');
+    background-size: cover;
     padding: 32px;
     flex-basis: 38%;
     min-width: 38%;

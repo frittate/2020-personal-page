@@ -1,14 +1,14 @@
 <template>
   <div>
      <div>
-    <!-- <mq-layout mq="small" class="sm-projects" :class="$mq">
+    <mq-layout mq="small" class="sm-projects" :class="$mq">
       <SimpleLogo />
       <SimpleNav />
-      <ProjectsContent />
-    </mq-layout> -->
+      <ProjectsItemContent :extData="projectDetails" :loading="loading"/>
+    </mq-layout>
 
     <mq-layout mq="screen" class="sm-projects" :class="$mq">
-      <ProjectsItemContent :extData="projectDetails"/>
+      <ProjectsItemContent :extData="projectDetails" :loading="loading"/>
       <Sidebar />
       <div class="sm-topbar">
         <SimpleLogo />
@@ -37,13 +37,15 @@ export default {
   },
   data(){
     return {
-      projectDetails: {}
+      projectDetails: {},
+      loading: true
     }
   },
   mounted(){
     loadItem(this.$prismic, this.$route.params.id).then(res => {
       console.log('details', res);
       this.projectDetails = res;
+      this.loading = false;
     })
   }
 }

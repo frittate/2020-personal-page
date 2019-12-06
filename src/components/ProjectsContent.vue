@@ -33,7 +33,7 @@ export default {
   computed:{
     filteredProjects(){
       if (this.filter != '') {
-        return this.projects.filter(item => item.category === this.filter);
+        return this.projects.filter(item => item.categories[0] === this.filter);
       } else {
         return this.projects;
       }

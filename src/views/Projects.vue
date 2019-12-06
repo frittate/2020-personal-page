@@ -1,5 +1,7 @@
 <template>
    <div>
+    <page-transition />
+
     <mq-layout mq="small" class="sm-projects" :class="$mq">
       <SimpleLogo />
       <SimpleNav />
@@ -22,10 +24,13 @@ import SimpleLogo from '../components/SimpleLogo';
 import SimpleNav from '../components/SimpleNav';
 import ProjectsContent from '../components/ProjectsContent';
 import Sidebar from '../components/Sidebar';
+import PageTransition from '../components/PageTransition';
+
 
 export default {
   name: 'Projects',
   components: {
+    PageTransition,
     SimpleLogo,
     SimpleNav,
     Sidebar,

@@ -1,31 +1,41 @@
 <template>
-  <div class="sm-p-item__wrapper" :class="$mq">
-    <router-link to="/projects" class="sm-p-item__back">-- Zurück</router-link>
-    <h1 class="sm-p-item__headline">{{extData.client}}</h1>
-    <h2 class="sm-p-item__category">{{categories}}</h2>
-    <p class="sm-p-item__description">
-      {{extData.description}}
-    </p>
-    <ul class="sm-p-item__tags">
-      <li v-for="item in extData.technologies" :key="item.id">
-        {{item}}
-      </li>
-    </ul>
-  </div>
+    <div class="sm-p-item__wrapper" :class="$mq">
+      <div v-if="loading">
+        <h1 class="sm-p-item__headline">...</h1>
+      </div>
+      <div v-else>
+        <router-link to="/projects" class="sm-p-item__back">Zur Projektübersicht</router-link>
+        <h1 class="sm-p-item__headline">{{extData.client}}</h1>
+        <h2 class="sm-p-item__category">{{categories}}</h2>
+        <p class="sm-p-item__description">
+          {{extData.description}}
+        </p>
+        <ul class="sm-p-item__tags">
+          <li v-for="item in extData.technologies" :key="item.id">
+            {{item}}
+          </li>
+        </ul>
+      </div>
+    </div>
 </template>
 
 <script>
 export default {
   name: 'ProjectsItemContent',
   props: {
-    extData: Object
+    extData: Object,
+    loading: Boolean
   },
   computed: {
     categories(){
       if (this.extData.categories.includes('full')) {
-        return 'Projektmanagement | Design | Programmierung'
+        return 'Projektmanagement | Webdesign | Programmierung'
+      } else if(this.extData.categories.includes('code')) {
+        return 'Programmierung'
+      } else if(this.extData.categories.includes('design')) {
+        return 'Webdesign'
       } else {
-        return 'tba'
+        return ''
       }
     }
   }
@@ -40,7 +50,9 @@ export default {
     flex-basis: 62%;
     padding: 200px 60px 0 80px;
     background-color: var(--main-color);
+  }
 
+  .sm-p-item__wrapper > div:first-child {
     display: flex;
     flex-flow: column;
     align-items: flex-start;
@@ -82,9 +94,10 @@ export default {
 
   .sm-p-item__tags {
     list-style-type: none;
-    display: inline-flex;
+    display: inline;
     margin: 0;
     padding: 0;
+    max-width: 600px;
   }
 
   .sm-p-item__tags li{
@@ -96,6 +109,7 @@ export default {
     justify-content: center;
     align-items: center;
     min-width: 60px;
+    margin-bottom: 12px;
   }
 
   .sm-p-item__tags li:not(:last-child) {
@@ -105,8 +119,12 @@ export default {
   /* Small Screens */
 
   .sm-p-item__wrapper.small {
-    padding: 16px;
+    padding: 32px 16px 120px 16px;
     flex-grow: 1;
+  }
+
+  .small .sm-p-item__category {
+    margin-bottom: 34px;
   }
 
 </style>

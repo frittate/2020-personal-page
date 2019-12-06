@@ -1,24 +1,27 @@
 <template>
-  <div>
-    <mq-layout mq="small" class="sm-home" :class="$mq">
-      <SimpleLogo />
-      <LandingPagePortrait />
-      <LandingPageSidebar />
-      <SimpleNav />
-    </mq-layout>
-    <mq-layout mq="screen" class="sm-home" :class="$mq">
-      <LandingPagePortrait />
-      <LandingPageSidebar />
-      <div class="sm-topbar">
+    <div>
+      <mq-layout mq="small" class="sm-home" :class="$mq">
         <SimpleLogo />
+        <LandingPagePortrait />
+        <LandingPageSidebar />
         <SimpleNav />
-      </div>
-    </mq-layout>
-  </div>
+      </mq-layout>
+      <mq-layout mq="screen" class="sm-home" :class="$mq">
+        <LandingPagePortrait />
+        <LandingPageSidebar />
+        <div class="sm-topbar">
+          <SimpleLogo />
+          <SimpleNav />
+        </div>
+      </mq-layout>
+    </div>
 </template>
 
 <script>
 // @ is an alias to /src
+//https://greensock.com/forums/topic/19492-page-transition/
+//https://greensock.com/forums/topic/19937-create-transition-from-smaller-image-to-fullscreen-on-new-page/
+
 import SimpleLogo from '../components/SimpleLogo';
 import SimpleNav from '../components/SimpleNav';
 import LandingPagePortrait from '../components/LandingPagePortrait';
@@ -31,6 +34,14 @@ export default {
     SimpleNav,
     LandingPagePortrait,
     LandingPageSidebar
+  },
+  data(){
+    return {
+      showTransition: false
+    }
+  },
+  mounted(){
+    //this.showTransition = true;
   }
 }
 </script>
@@ -44,10 +55,10 @@ export default {
   .sm-home.screen {
     overflow: hidden;
     display: flex;
-    min-height: 1000px;
     position: relative;
     align-items: stretch;
     height: 95vh;
+    background: var(--main-black);
     justify-content: flex-end;
   }
 
