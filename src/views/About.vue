@@ -1,5 +1,18 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <Content>
+    <template v-slot:content>
+      <h1>About</h1>
+    </template>
+  </Content>
 </template>
+
+<script>
+import Content from '../components/Content'
+
+export default {
+  name: 'Projects',
+  components: {
+    Content,
+  }
+}
+</script>

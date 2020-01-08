@@ -1,28 +1,13 @@
 <template>
-  <div>
-     <div>
-    <mq-layout mq="small" class="sm-projects" :class="$mq">
-      <SimpleLogo />
-      <SimpleNav />
+  <Content>
+    <template v-slot:content>
       <ProjectsItemContent :extData="projectDetails" :loading="loading"/>
-    </mq-layout>
-
-    <mq-layout mq="screen" class="sm-projects" :class="$mq">
-      <ProjectsItemContent :extData="projectDetails" :loading="loading"/>
-      <Sidebar />
-      <div class="sm-topbar">
-        <SimpleLogo />
-        <SimpleNav />
-      </div>
-    </mq-layout>
-  </div>
-  </div>
+    </template>
+  </Content>
 </template>
 
 <script>
-import SimpleLogo from '../components/SimpleLogo';
-import SimpleNav from '../components/SimpleNav';
-import Sidebar from '../components/Sidebar';
+import Content from '../components/Content'
 import ProjectsItemContent from '../components/ProjectsItemContent'
 
 import {loadSingleData as loadItem} from '@/data/loadDataFromPrismic.js';
@@ -30,9 +15,7 @@ import {loadSingleData as loadItem} from '@/data/loadDataFromPrismic.js';
 export default {
   name: 'ProjectItem',
   components: {
-    SimpleLogo,
-    SimpleNav,
-    Sidebar,
+    Content,
     ProjectsItemContent
   },
   data(){

@@ -1,28 +1,37 @@
 export function loadAllData(prismic){
   return new Promise((resolve, reject) => {
-    const projects = [];
+    const projects = {
+      de: [],
+      en: [],
+    };
 
     try {
       prismic.client
-        .query(prismic.Predicates.at('document.type', 'portfolio-project'))
+        .query(prismic.Predicates.at('document.type', 'portfolio-project'),
+        { lang : '*' })
         .then(response => {
           console.log(response);
           response.results.forEach(el => {
-            const item = {
-              id: el.uid,
-              client: el.data.project_name[0].text,
-              categories: el.tags,
-              description: el.data.project_description[0].text,
-              preview_image: el.data.preview_image,
-              images: el.data.project_images,
-              technologies: []
+              const item = {
+                id: el.uid,
+                client: el.data.project_name[0].text,
+                categories: el.tags,
+                description: el.data.project_description[0].text,
+                preview_image: el.data.preview_image,
+                images: el.data.project_images,
+                technologies: []
+              }
+  
+              el.data.project_category.forEach(sub_el => {
+                item.technologies.push(sub_el.technologies)
+              })
+
+            if (el.lang === "de-de") {
+              projects.de.push(item);
+            } else {
+              projects.en.push(item);
             }
-
-            el.data.project_category.forEach(sub_el => {
-              item.technologies.push(sub_el.technologies)
-            })
-
-            projects.push(item);
+           
 
           });
           resolve(projects)

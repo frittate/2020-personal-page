@@ -1,22 +1,23 @@
 <template>
   <div id="app" :class="$mq">
-   <page-transition />
-    <transition 
+   <!-- <page-transition /> -->
+    <!-- <transition 
     v-on:before-enter="rightToLeft" 
     v-on:appear="setup" 
-    v-bind:css="false">
+    v-bind:css="false"> -->
       <router-view />
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
 
 <script>
 import { gsap } from "gsap";
-import PageTransition from './components/PageTransition';
+require('@/assets/css/typo.css')
+//import PageTransition from './components/PageTransition';
 
 export default {
   components: {
-    PageTransition
+    //PageTransition
   },
   methods: {
      rightToLeft: function(done){

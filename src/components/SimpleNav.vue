@@ -1,8 +1,9 @@
 <template>
   <div class="sm-nav__wrapper" :class="$mq">
     <router-link to="/about">Über mich</router-link>
+    <router-link to="/techstack">Tech Stack</router-link>    
     <router-link to="/projects">Projekte</router-link>
-    <router-link to="/contanct">Kontakt</router-link>
+    <router-link to="/contact">Kontakt</router-link>
   </div>
 </template>
 

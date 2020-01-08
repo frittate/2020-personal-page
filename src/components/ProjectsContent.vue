@@ -1,10 +1,9 @@
 <template>
-  <div class="sm-projects__wrapper" :class="$mq">
+  <div>
     <div class="sm-projects__nav">
       <p @click="setFilter('all')" class="sm-projects__filter" :class="{'active' : filter === ''}">Alle</p>
       <p @click="setFilter('full')" class="sm-projects__filter" :class="{'active' : filter === 'full'}">Komplettprojekte</p>
       <p @click="setFilter('code')" class="sm-projects__filter" :class="{'active' : filter === 'code'}">Webentwicklung</p>
-      <p @click="setFilter('design')" class="sm-projects__filter" :class="{'active' : filter === 'design'}">Webdesign</p>
     </div>
     <div class="sm-projects__grid">
       <div v-for="item in filteredProjects" :key="item.id" class="sm-projects__card">
@@ -46,7 +45,7 @@ export default {
     loadData(){
       loadExternalData(this.$prismic).then(res => {
         console.log(res);
-        this.projects = res;
+        this.projects = res.de;
       })
     },
     setFilter(target){
@@ -65,13 +64,7 @@ export default {
 
 <style scoped>
 /* Overall styles */
-  .sm-projects__wrapper {
-    z-index: 1;
-    position: relative;
-    flex-basis: 62%;
-    padding: 200px 60px 0 80px;
-    background-color: var(--main-color);
-  }
+  
 
   .sm-projects__title {
     font-family: 'Open Sans', sans-serif;
@@ -138,11 +131,6 @@ export default {
   }
 
   /* Small Screens */
-
-  .sm-projects__wrapper.small {
-    padding: 16px;
-    flex-grow: 1;
-  }
 
   .small .sm-projects__grid {
     display: grid;

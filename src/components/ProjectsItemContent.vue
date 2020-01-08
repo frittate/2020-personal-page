@@ -48,7 +48,7 @@ export default {
     z-index: 1;
     position: relative;
     flex-basis: 62%;
-    padding: 200px 60px 0 80px;
+    padding: 60px 60px 0 80px;
     background-color: var(--main-color);
   }
 

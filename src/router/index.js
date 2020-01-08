@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Projects from '../views/Projects.vue'
 import ProjectItem from '../views/ProjectItem.vue'
+import TechStack from '../views/TechStack.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/projects/:id',
     name: 'projectItem',
     component: ProjectItem
+  },
+  {
+    path: '/techstack',
+    name: 'techstack',
+    component: TechStack,
   }
 ]
 
